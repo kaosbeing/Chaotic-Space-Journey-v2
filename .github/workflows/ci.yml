@@ -26,7 +26,6 @@ jobs:
             - name: Format
               run: npm run format-check
     sonarcloud:
-        environment: env
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
