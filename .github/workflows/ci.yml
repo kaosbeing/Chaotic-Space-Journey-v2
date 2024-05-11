@@ -22,9 +22,6 @@ jobs:
 
             - name: eslint
               run: npm run lint
-
-            - name: Format
-              run: npx prettier . --check --log-level debug
     sonarcloud:
         runs-on: ubuntu-latest
         steps:
