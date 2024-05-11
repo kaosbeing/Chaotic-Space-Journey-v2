@@ -16,6 +16,7 @@ jobs:
             - name: Build
               run: npm run build
     deploy:
+        environment: env
         runs-on: ubuntu-latest
         steps:
             - name: Deploy to Netlify
