@@ -24,7 +24,7 @@ jobs:
               run: npm run lint
 
             - name: Format
-              run: npm run format-check
+              run: npm run format-check --log-level debug
     sonarcloud:
         runs-on: ubuntu-latest
         steps:
