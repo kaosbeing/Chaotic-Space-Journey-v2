@@ -23,8 +23,15 @@ jobs:
             - name: eslint
               run: npm run lint
 
+            - name: List files for debugging
+              run: ls -la
+
+            - name: Check Prettier version
+              run: npx prettier --version
+
             - name: Format
               run: npx prettier --config ./.prettierrc . --check
+
     sonarcloud:
         runs-on: ubuntu-latest
         steps:
