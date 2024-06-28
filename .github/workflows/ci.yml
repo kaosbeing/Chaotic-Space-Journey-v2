@@ -24,7 +24,7 @@ jobs:
               run: npm run lint
 
             - name: Format
-              run: npx prettier --config .prettierrc --check --log-level debug
+              run: npx prettier --config .prettierrc --check . --log-level debug
 
     sonarcloud:
         runs-on: ubuntu-latest
