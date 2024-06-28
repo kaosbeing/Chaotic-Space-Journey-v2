@@ -23,6 +23,9 @@ jobs:
             - name: eslint
               run: npm run lint
 
+            - name: cat page.tsx before writing
+              run: cat ./app/page.tsx
+
             - name: Format
               run: npx prettier --config .prettierrc --write . --log-level debug
 
