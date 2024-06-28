@@ -7,8 +7,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "format-write": "npx prettier --write '{**/*,*}.{js,ts,jsx,tsx,vue,astro}'",
-        "format-check": "npx prettier . --check"
+        "prettier:write": "npx prettier --write '{**/*,*}.{js,ts,jsx,tsx,vue,astro}'",
+        "prettier:check": "npx prettier . --check"
     },
     "dependencies": {
         "@emotion/cache": "^11.11.0",

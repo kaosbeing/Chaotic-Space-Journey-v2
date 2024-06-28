@@ -30,7 +30,7 @@ jobs:
               run: npx prettier --version
 
             - name: Format
-              run: npx prettier --config ./.prettierrc . --check
+              run: npm run prettier:check
 
     sonarcloud:
         runs-on: ubuntu-latest
