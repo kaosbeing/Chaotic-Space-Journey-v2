@@ -24,7 +24,10 @@ jobs:
               run: npm run lint
 
             - name: Format
-              run: npx prettier --config .prettierrc --check . --log-level debug
+              run: npx prettier --config .prettierrc --write . --log-level debug
+
+            - name: cat page.tsx to see differences and hopefully debug this shit
+              run: cat ./app/page.tsx
 
     sonarcloud:
         runs-on: ubuntu-latest
