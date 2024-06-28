@@ -23,14 +23,8 @@ jobs:
             - name: eslint
               run: npm run lint
 
-            - name: cat page.tsx before writing
-              run: cat ./app/page.tsx
-
             - name: Format
-              run: npx prettier --config .prettierrc --write . --log-level debug
-
-            - name: cat page.tsx to see differences and hopefully debug this shit
-              run: cat ./app/page.tsx
+              run: npx prettier --config .prettierrc --check . --log-level debug
 
     sonarcloud:
         runs-on: ubuntu-latest
