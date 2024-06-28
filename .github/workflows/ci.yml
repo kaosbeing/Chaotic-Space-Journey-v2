@@ -1,60 +1,51 @@
 on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request.
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
+    # Trigger analysis when pushing in master or pull requests, and when creating
+    # a pull request.
+    push:
+        branches:
+            - master
+    pull_request:
+        types: [opened, synchronize, reopened]
 
 name: Pipeline
 jobs:
-  linters:
-    name: Linters
-    runs-on: ubuntu-latest
+    linters:
+        name: Linters
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Git repository
-        uses: actions/checkout@v3
+        steps:
+            - name: Checkout Git repository
+              uses: actions/checkout@v3
 
-      - name: Install Node.js dependencies
-        run: npm ci
+            - name: Install Node.js dependencies
+              run: npm ci
 
-      - name: eslint
-        run: npm run lint
+            - name: Format
+              run: npm run prettier:check
 
-      - name: List files for debugging
-        run: ls -la
+            - name: eslint
+              run: npm run lint
 
-      - name: Check Prettier version
-        run: npx prettier --version
+    sonarcloud:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-      - name: Check .prettierrc
-        run: cat .prettierrc
+            - name: SonarCloud Scan
+              uses: sonarsource/sonarcloud-github-action@master
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out Git repository
+              uses: actions/checkout@v4
 
-      - name: Format
-        run: npm run prettier:check
+            - name: Install Node.js dependencies
+              run: npm ci
 
-  sonarcloud:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v4
-
-      - name: Install Node.js dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
+            - name: Build
+              run: npm run build
