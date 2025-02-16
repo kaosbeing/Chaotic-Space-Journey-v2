@@ -1,10 +1,14 @@
+import eslintPluginReact from 'eslint-plugin-react';
+import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
+import babelParser from '@babel/eslint-parser';
+
 export default [
     {
-        ignores: ['node_modules/', 'dist/', 'build/'] // Ignore common directories
+        ignores: ['node_modules/', 'dist/', 'build/']
     },
     {
         languageOptions: {
-            parser: '@babel/eslint-parser',
+            parser: babelParser,
             parserOptions: {
                 requireConfigFile: false,
                 babelOptions: {
@@ -15,8 +19,8 @@ export default [
     },
     {
         plugins: {
-            react: require('eslint-plugin-react'),
-            'react-hooks': require('eslint-plugin-react-hooks')
+            react: eslintPluginReact,
+            'react-hooks': eslintPluginReactHooks
         },
         rules: {
             'react/jsx-uses-react': 'error',
@@ -24,4 +28,5 @@ export default [
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'warn'
         }
-    }];
+    }
+];
