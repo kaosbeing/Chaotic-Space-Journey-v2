@@ -14,6 +14,3 @@ COPY . .
 
 # Expose port 3000 for the React app
 EXPOSE 3000
-
-# Start the development server
-CMD ["npm", "start"]
