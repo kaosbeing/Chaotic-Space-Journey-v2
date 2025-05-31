@@ -7,8 +7,12 @@ interface AuthContextProviderProps {
     children: ReactElement;
 }
 
-export function AuthContextProvider({ children }: Readonly<AuthContextProviderProps>) {
-    const [token, setToken] = useState<string>(localStorage.getItem('agent-token') ?? '');
+export function AuthContextProvider({
+    children,
+}: Readonly<AuthContextProviderProps>) {
+    const [token, setToken] = useState<string>(
+        localStorage.getItem('agent-token') ?? '',
+    );
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     const navigate = useNavigate();
@@ -40,9 +44,11 @@ export function AuthContextProvider({ children }: Readonly<AuthContextProviderPr
         navigate('/login');
     }
 
-    return <AuthContext.Provider value={{ token, isLoggedIn, login, logout }}>
-        {children}
-    </AuthContext.Provider>;
+    return (
+        <AuthContext.Provider value={{ token, isLoggedIn, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
 export const useAuth = () => useContext(AuthContext);

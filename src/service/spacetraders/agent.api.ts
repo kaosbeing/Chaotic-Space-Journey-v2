@@ -3,17 +3,21 @@ import { Register } from '../dto/register.dto';
 import { RegisterResponse } from '../dto/registerResponse.dto';
 import { AxiosHeaders } from 'axios';
 
-export const register = async (request: Register): Promise<RegisterResponse> => {
+export const register = async (
+    request: Register,
+): Promise<RegisterResponse> => {
     const header = {
-        'Authorization': 'Bearer ' + request.bearer
+        Authorization: 'Bearer ' + request.bearer,
     };
     delete request.bearer;
 
-    return http.post('/register', request, {
-        headers: header
-    }).then((response) => {
-        return response.data.data;
-    });
+    return http
+        .post('/register', request, {
+            headers: header,
+        })
+        .then((response) => {
+            return response.data.data;
+        });
 };
 
 export const getAgent = async (token = '') => {

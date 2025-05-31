@@ -23,33 +23,45 @@ function AuthPage() {
     }, []);
 
     return (
-        <Grid container alignItems={'center'} justifyContent={'center'} height={'100vh'}>
+        <Grid
+            container
+            alignItems={'center'}
+            justifyContent={'center'}
+            height={'100vh'}
+        >
             <Grid size={3}>
                 <Card>
-                    <Grid container direction={'column'} p={4} gap={2} alignItems={'center'}>
+                    <Grid
+                        container
+                        direction={'column'}
+                        p={4}
+                        gap={2}
+                        alignItems={'center'}
+                    >
                         <LogoUi />
-                        {
-                            isLoggingIn ?
-                                <>
-                                    <LoginForm />
-                                    <Link
-                                        style={{ cursor: 'pointer' }}
-                                        onClick={() => setIsLoggingIn(!isLoggingIn)}
-                                        color={'primary'}>
-                                        No token ? Register a new agent.
-                                    </Link>
-                                </>
-                                :
-                                <>
-                                    <RegisterForm factionList={factionList} />
-                                    <Link
-                                        style={{ cursor: 'pointer' }}
-                                        onClick={() => setIsLoggingIn(!isLoggingIn)}
-                                        color={'primary'}>
-                                        Already registered ? Log in with your token.
-                                    </Link>
-                                </>
-                        }
+                        {isLoggingIn ? (
+                            <>
+                                <LoginForm />
+                                <Link
+                                    style={{ cursor: 'pointer' }}
+                                    onClick={() => setIsLoggingIn(!isLoggingIn)}
+                                    color={'primary'}
+                                >
+                                    No token ? Register a new agent.
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <RegisterForm factionList={factionList} />
+                                <Link
+                                    style={{ cursor: 'pointer' }}
+                                    onClick={() => setIsLoggingIn(!isLoggingIn)}
+                                    color={'primary'}
+                                >
+                                    Already registered ? Log in with your token.
+                                </Link>
+                            </>
+                        )}
                     </Grid>
                 </Card>
             </Grid>

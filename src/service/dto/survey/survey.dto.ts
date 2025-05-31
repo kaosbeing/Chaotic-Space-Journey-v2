@@ -1,4 +1,4 @@
-import { SurveyDeposit } from "./deposit.survey.dto";
+import { SurveyDeposit } from './deposit.survey.dto';
 
 export interface Survey {
     signature: string;

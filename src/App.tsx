@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter
-} from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import AuthPage from './pages/auth/auth.page';
 import { RouterProvider } from 'react-router';
@@ -20,9 +18,9 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <DashboardPage />
-                    }
-                ]
+                        element: <DashboardPage />,
+                    },
+                ],
             },
             {
                 path: 'auth',
@@ -30,17 +28,14 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <AuthPage />
-                    }
-                ]
-            }
-        ]
-    }
+                        element: <AuthPage />,
+                    },
+                ],
+            },
+        ],
+    },
 ]);
 
-const App = () => (
-    <RouterProvider router={router} />
-);
+const App = () => <RouterProvider router={router} />;
 
 export default App;
-

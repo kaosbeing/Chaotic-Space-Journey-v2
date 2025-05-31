@@ -1,5 +1,5 @@
 export interface FactionTrait {
-    symbol: string,
-    name: string,
-    description: string
+    symbol: string;
+    name: string;
+    description: string;
 }

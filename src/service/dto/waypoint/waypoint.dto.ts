@@ -1,9 +1,9 @@
-import { Faction } from "../faction.dto";
-import { WaypointType } from "../waypoint.type";
-import { WaypointChart } from "./chart.waypoint.dto";
-import { WaypointModifier } from "./modifier.waypoint.dto";
-import { WaypointOrbital } from "./orbital.waypoint.dto";
-import { WaypointTrait } from "./trait.waypoint.dto";
+import { Faction } from '../faction.dto';
+import { WaypointType } from '../waypoint.type';
+import { WaypointChart } from './chart.waypoint.dto';
+import { WaypointModifier } from './modifier.waypoint.dto';
+import { WaypointOrbital } from './orbital.waypoint.dto';
+import { WaypointTrait } from './trait.waypoint.dto';
 
 export interface Waypoint {
     symbol: string;

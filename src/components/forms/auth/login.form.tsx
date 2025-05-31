@@ -11,7 +11,7 @@ const LoginForm = () => {
     }
 
     const initialValues: Login = {
-        token: ''
+        token: '',
     };
 
     const onSubmit = async (data: Login, helpers: FormikHelpers<Login>) => {
@@ -21,18 +21,41 @@ const LoginForm = () => {
     };
 
     return (
-        <Grid container gap={2} direction={'column'} alignItems={'center'} width={'100%'}>
+        <Grid
+            container
+            gap={2}
+            direction={'column'}
+            alignItems={'center'}
+            width={'100%'}
+        >
             <Grid>
-                <Typography color={'primary'} fontWeight={'bold'}>Login with a token</Typography>
+                <Typography color={'primary'} fontWeight={'bold'}>
+                    Login with a token
+                </Typography>
             </Grid>
             <Formik initialValues={initialValues} onSubmit={onSubmit}>
                 {({ isSubmitting, handleSubmit, handleChange }) => (
                     <Form onSubmit={handleSubmit}>
-                        <Grid container spacing={2} direction={'column'} gap={2}>
-
-                            <TextField required label={'Token'} name={'token'} onChange={handleChange} />
-                            <Button variant={'contained'} color={'success'} loading={isSubmitting}
-                                    type="submit">Submit</Button>
+                        <Grid
+                            container
+                            spacing={2}
+                            direction={'column'}
+                            gap={2}
+                        >
+                            <TextField
+                                required
+                                label={'Token'}
+                                name={'token'}
+                                onChange={handleChange}
+                            />
+                            <Button
+                                variant={'contained'}
+                                color={'success'}
+                                loading={isSubmitting}
+                                type="submit"
+                            >
+                                Submit
+                            </Button>
                         </Grid>
                     </Form>
                 )}

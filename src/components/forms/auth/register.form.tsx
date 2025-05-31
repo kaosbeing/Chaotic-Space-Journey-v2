@@ -1,11 +1,14 @@
 import {
     Button,
-    FormControl, IconButton,
-    InputLabel, Link,
+    FormControl,
+    IconButton,
+    InputLabel,
+    Link,
     MenuItem,
     Select,
     SelectChangeEvent,
-    TextField, Tooltip,
+    TextField,
+    Tooltip,
     Typography
 } from '@mui/material';
 import Grid from '@mui/material/Grid2';
@@ -16,7 +19,6 @@ import { register } from '../../../service/spacetraders/agent.api';
 import { Register } from '../../../service/dto/register.dto';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import AgentRegisterUi from './agent-register.ui';
-import { useNavigate } from 'react-router';
 import { useAuth } from '../../../service/auth.context.provider';
 
 interface RegisterFormProps {
@@ -34,7 +36,10 @@ const RegisterForm = ({ factionList }: RegisterFormProps) => {
         setFaction(e.target.value as string);
     };
 
-    const handleSubmit = async (data: Register, helpers: FormikHelpers<Register>) => {
+    const handleSubmit = async (
+        data: Register,
+        helpers: FormikHelpers<Register>
+    ) => {
         helpers.setSubmitting(true);
         const res = await register(data).then((res) => res);
         helpers.setSubmitting(false);
@@ -59,30 +64,65 @@ const RegisterForm = ({ factionList }: RegisterFormProps) => {
         <>
             <Grid container direction={'column'} alignItems={'center'} gap={2}>
                 <Grid>
-                    <Typography color={'primary'} fontWeight={'bold'}>Register a new agent</Typography>
+                    <Typography color={'primary'} fontWeight={'bold'}>
+                        Register a new agent
+                    </Typography>
                 </Grid>
 
                 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                     {({ isSubmitting, handleSubmit, handleChange }) => (
                         <Form onSubmit={handleSubmit}>
-                            <Grid container spacing={2} direction={'column'} gap={2}>
+                            <Grid
+                                container
+                                spacing={2}
+                                direction={'column'}
+                                gap={2}
+                            >
                                 <Tooltip
-                                    title={'To register an agent, you must provide a SpaceTraders account token in order to link your agent to your account.'}
-                                    placement={'top'} arrow>
-                                    <Grid container gap={2} alignItems={'center'} justifyContent={'center'}>
-                                        <TextField name={'bearer'} label={'Account Token'}
-                                                   onChange={handleChange} />
+                                    title={
+                                        'To register an agent, you must provide a SpaceTraders account token in order to link your agent to your account.'
+                                    }
+                                    placement={'top'}
+                                    arrow
+                                >
+                                    <Grid
+                                        container
+                                        gap={2}
+                                        alignItems={'center'}
+                                        justifyContent={'center'}
+                                    >
+                                        <TextField
+                                            name={'bearer'}
+                                            label={'Account Token'}
+                                            onChange={handleChange}
+                                        />
                                         <Grid height={'min-content'}>
-                                            <Link href={'https://my.spacetraders.io/'} target={'_blank'}>
+                                            <Link
+                                                href={
+                                                    'https://my.spacetraders.io/'
+                                                }
+                                                target={'_blank'}
+                                            >
                                                 <IconButton>
-                                                    <OpenInNewIcon color={'primary'} />
+                                                    <OpenInNewIcon
+                                                        color={'primary'}
+                                                    />
                                                 </IconButton>
                                             </Link>
                                         </Grid>
                                     </Grid>
                                 </Tooltip>
-                                <TextField name={'email'} label={'Email'} onChange={handleChange} />
-                                <TextField name={'symbol'} required label={'Agent Symbol'} onChange={handleChange} />
+                                <TextField
+                                    name={'email'}
+                                    label={'Email'}
+                                    onChange={handleChange}
+                                />
+                                <TextField
+                                    name={'symbol'}
+                                    required
+                                    label={'Agent Symbol'}
+                                    onChange={handleChange}
+                                />
                                 <FormControl required>
                                     <InputLabel>Faction</InputLabel>
                                     <Select
@@ -93,13 +133,16 @@ const RegisterForm = ({ factionList }: RegisterFormProps) => {
                                         onChange={(e) => {
                                             handleChange(e);
                                             handleSelectChange(e);
-                                        }}>
-                                        {
-                                            factionList.map((faction) => (
-                                                <MenuItem key={faction.symbol}
-                                                          value={faction.symbol}>{faction.name}</MenuItem>
-                                            ))
-                                        }
+                                        }}
+                                    >
+                                        {factionList.map((faction) => (
+                                            <MenuItem
+                                                key={faction.symbol}
+                                                value={faction.symbol}
+                                            >
+                                                {faction.name}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
                                 <Button
@@ -116,7 +159,11 @@ const RegisterForm = ({ factionList }: RegisterFormProps) => {
                     )}
                 </Formik>
             </Grid>
-            <AgentRegisterUi dialogOpen={dialogOpen} agentToken={agentToken} handleDialogClose={handleDialogClose} />
+            <AgentRegisterUi
+                dialogOpen={dialogOpen}
+                agentToken={agentToken}
+                handleDialogClose={handleDialogClose}
+            />
         </>
     );
 };

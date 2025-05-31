@@ -1,4 +1,4 @@
-import { SiphonYield } from "./yield.siphon.dto";
+import { SiphonYield } from './yield.siphon.dto';
 
 export interface Siphon {
     shipSymbol: string;

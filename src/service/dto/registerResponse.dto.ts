@@ -4,9 +4,9 @@ import { Faction } from './faction.dto';
 import { Ship } from './ship/ship.dto';
 
 export interface RegisterResponse {
-    agent: Agent,
-    contract: Contract,
-    faction: Faction,
-    ship: Ship,
-    token: string
+    agent: Agent;
+    contract: Contract;
+    faction: Faction;
+    ship: Ship;
+    token: string;
 }
