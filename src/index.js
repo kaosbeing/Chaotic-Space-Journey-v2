@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from './config/theme';
 
@@ -12,5 +13,5 @@ root.render(
             <CssBaseline />
             <App />
         </ThemeProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
 );
