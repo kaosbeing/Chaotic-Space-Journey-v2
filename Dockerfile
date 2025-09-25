@@ -8,9 +8,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --ignore-scripts
 
-COPY . .
+COPY src src
 
 # Expose port 3000 for the React app
 EXPOSE 3000
