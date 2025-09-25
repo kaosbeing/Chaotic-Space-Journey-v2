@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useAuth } from './auth.context.provider';
 
 const http = axios.create({
     baseURL: 'https://api.spacetraders.io/v2/',
